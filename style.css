@@ -1,0 +1,555 @@
+/* =================================================================
+   1. DEFINISI WARNA & FONT DASAR (CSS VARIABLES)
+   ================================================================= */
+
+   /* =================================================================
+   HEADER / NAVBAR STYLES
+   ================================================================= */
+.site-header {
+    background-color: var(--light-beige-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0 2rem;
+    position: sticky; /* Membuat navbar tetap di atas saat scroll */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 70px; /* Tinggi navbar */
+}
+
+/* Penyesuaian agar konten tidak tertutup navbar */
+.card, .page-container {
+    margin-top: 70px; /* Beri jarak atas seukuran tinggi navbar */
+}
+
+.nav-logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--primary-red);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--dark-text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-red);
+    transition: width 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary-red);
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Gaya untuk link halaman yang sedang aktif */
+.nav-link.active-link {
+    color: var(--primary-red);
+    font-weight: 700;
+}
+.nav-link.active-link::after {
+    width: 100%;
+}
+
+.hamburger-menu {
+    display: none; /* Sembunyikan di desktop */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+.hamburger-menu .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark-text);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* === RESPONSIVE NAVBAR === */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Sembunyikan menu di mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--light-beige-bg);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        text-align: center;
+    }
+    
+    .nav-links.nav-active {
+        display: flex; /* Tampilkan menu saat aktif */
+    }
+
+    .nav-links li {
+        padding: 0.5rem 0;
+    }
+    
+    .hamburger-menu {
+        display: flex; /* Tampilkan tombol hamburger di mobile */
+    }
+
+    /* Animasi Tombol Hamburger menjadi 'X' */
+    .hamburger-menu.active .line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.active .line:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active .line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+:root {
+    /* Palet Warna Baru */
+    --primary-red: #E43636;
+    --light-beige-bg: #F6EFD2;
+    --accent-khaki: #E2DDB4;
+    --dark-text: #000000;
+    
+    /* Warna Pendukung */
+    --light-text: #ffffff;
+    --border-color: #d1ccc0; /* Warna border yang lebih soft */
+}
+
+/* =================================================================
+   2. GAYA DASAR & GLOBAL (BODY, TOMBOL, DLL.)
+   ================================================================= */
+/* CSS BARU YANG SUDAH DIPERBAIKI */
+/* Ganti aturan 'body' Anda dengan ini */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--dark-text);
+    margin: 0; /* Diperbaiki dari '5' menjadi '0' */
+    padding: 0;
+    color: var(--dark-text);
+}
+
+/* TAMBAHKAN CLASS BARU INI di bawah aturan body */
+.center-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Tinggi viewport dikurangi tinggi navbar agar pas di tengah */
+    min-height: calc(100vh - 70px); 
+    padding: 2rem; /* Ini akan menciptakan 'margin' di sekeliling kartu */
+    box-sizing: border-box;
+}
+
+/* ... sisa kode CSS Anda ... */
+.page-container {
+    width: 100%;
+    max-width: 968px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.page-main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--light-beige-bg);
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--primary-red);
+    color: var(--light-text);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid var(--primary-red);
+    transition: all 0.3s;
+}
+.button:hover {
+    background-color: transparent;
+    color: var(--primary-red);
+}
+
+.text-link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--primary-red);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.text-link-button:hover {
+    color: var(--dark-text);
+    text-decoration: underline;
+}
+.text-link-button::after {
+    content: ' →';
+    display: inline-block;
+}
+.project-card.active .text-link-button::after {
+    content: ' ↓';
+}
+
+/* =================================================================
+   3. GAYA HALAMAN UTAMA (ABOUT ME - index.html)
+   ================================================================= */
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1152px;
+    width: 100%;
+    background-color: var(--light-beige-bg);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.left-column {
+    background-color: var(--accent-khaki);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.profile-image {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 4px solid var(--light-beige-bg);
+    box-shadow: 0 4px 10px -1px rgb(0 0 0 / 0.2);
+    margin-bottom: 1.5rem;
+}
+.main-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary-red);
+}
+.subtitle {
+    font-size: 0.875rem;
+    color: #525252;
+    margin-top: 0.5rem;
+}
+.right-column {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.about-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 1.5rem;
+}
+.right-column p {
+    line-height: 1.625;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+.button-group {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.social-icon {
+    margin-top: 2rem;
+    width: 2rem;
+    height: 2rem;
+    color: #736b5a;
+    transition: color 0.3s;
+}
+.social-icon:hover {
+    color: var(--primary-red);
+}
+
+
+/* =================================================================
+   4. GAYA HALAMAN EXPERIENCE (experience.html)
+   ================================================================= */
+.info-card {
+    background-color: rgba(246, 239, 210, 0.95); /* var(--light-beige-bg) dengan transparansi */
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary-red);
+    margin-bottom: 1.5rem;
+}
+.item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.list-item:last-child {
+    border-bottom: none;
+}
+.item-list.no-lines .list-item {
+    border-bottom: none;
+}
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.item-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--primary-red);
+    transition: transform 0.3s ease;
+}
+.list-item.active .item-icon {
+    transform: rotate(135deg);
+}
+.icon-svg {
+    width: 100%;
+    height: 100%;
+}
+.item-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+.item-date {
+    font-size: 0.9rem;
+    color: #525252;
+    white-space: nowrap;
+    margin-left: 1rem;
+}
+/* Bagian yang mungkin hilang sebelumnya: cursor pointer untuk header */
+.list-item.collapsible .item-header {
+    cursor: pointer;
+    width: 100%;
+}
+.item-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    width: 100%;
+    padding: 0 0 0 2.25rem;
+    box-sizing: border-box;
+}
+.list-item.active .item-description {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 1rem 0 1rem 2.25rem;
+    transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+}
+.item-description h4 {
+    font-weight: 600;
+    color: var(--dark-text);
+    margin: 1rem 0 0.5rem 0;
+}
+.item-description ul {
+    padding-left: 1.25rem;
+    margin: 0 0 1rem 0;
+    list-style-type: square;
+}
+.item-description li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.item-description::-webkit-scrollbar { width: 8px; }
+.item-description::-webkit-scrollbar-track { background: var(--accent-khaki); }
+.item-description::-webkit-scrollbar-thumb { background: var(--primary-red); }
+
+
+.page-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.page-nav .button {
+    background-color: var(--light-beige-bg);
+    color: var(--primary-red);
+    border-color: var(--accent-khaki);
+}
+.page-nav .button:hover {
+    background-color: var(--primary-red);
+    color: var(--light-text);
+    border-color: var(--primary-red);
+}
+
+
+/* =================================================================
+   5. GAYA HALAMAN PROJECTS (projects.html)
+   ================================================================= */
+.project-card {
+    display: flex;
+    gap: 2rem;
+    background-color: var(--light-beige-bg);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+.project-image {
+    width: 300px;
+    flex-shrink: 0;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+.project-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.project-button {
+    margin-top: 1rem;
+    align-self: flex-start;
+}
+.collapsible-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+}
+.project-card.active .collapsible-details {
+    max-height: 300px;
+    overflow-y: auto;
+    opacity: 1;
+    margin-top: 1rem;
+}
+.collapsible-details h4 {
+    color: var(--primary-red);
+}
+.collapsible-details ul {
+    padding-left: 1.25rem;
+    margin: 0.5rem 0 0 0;
+}
+.collapsible-details li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.collapsible-details::-webkit-scrollbar { width: 8px; }
+.collapsible-details::-webkit-scrollbar-track { background: var(--accent-khaki); }
+.collapsible-details::-webkit-scrollbar-thumb { background: var(--primary-red); }
+
+
+/* =================================================================
+   6. GAYA HALAMAN CERTIFICATES (certificate.html)
+   ================================================================= */
+.certificate-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
+}
+.certificate-item {
+    background-color: var(--light-text);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.certificate-item:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+.certificate-item img {
+    width: 100%;
+    display: block;
+    border-radius: 0.25rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+
+/* =================================================================
+   7. PENGATURAN RESPONSIVE (MEDIA QUERIES)
+   ================================================================= */
+@media (min-width: 768px) {
+    /* About Me Page */
+    .card { grid-template-columns: 2fr 3fr; }
+    .profile-image { width: 12rem; height: 12rem; }
+    .main-title { font-size: 1.5rem; }
+    .right-column { padding: 3rem; }
+}
+
+@media (max-width: 768px) {
+    /* Project Page */
+    .project-card { flex-direction: column; }
+    .project-image { width: 100%; height: 200px; }
+    .project-title { font-size: 1.25rem; }
+    /* Certificate Page */
+    .certificate-gallery { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    /* Experience Page */
+    .list-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .item-date { margin-left: 0; /* Dihapus agar sejajar kiri */ background-color: var(--accent-khaki); color: var(--dark-text); padding: 0.1rem 0.5rem; border-radius: 0.5rem; font-size: 0.75rem; }
+    /* Global */
+    .section-title { font-size: 1.5rem; }
+    .info-card { padding: 1.5rem; }
+    .page-main-title { font-size: 2rem; }
+}

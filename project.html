@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - Hendiaziz</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-container">
+        <a href="about.html" class="nav-logo">Hendiaziz N.P.</a>
+
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="about.html" class="nav-link">About Me</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="project.html" class="nav-link">Projects</a></li>
+                <li><a href="certivicate.html" class="nav-link">Certificates</a></li>
+            </ul>
+        </nav>
+
+        <button class="hamburger-menu" aria-label="Open Navigation Menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </div>
+</header>
+
+    <div class="page-container">
+        <h1 class="page-main-title">My Projects</h1>
+
+     
+<section class="project-card">
+    <img src="img/project1.jpg" alt="Gambar Proyek Radar Anti Drone" class="project-image">
+    <div class="project-details">
+        <h2 class="project-title">Research Assistant Intern at PT. Radar Telekomunikasi Indonesia</h2>
+        <div class="project-description">
+            <h4>Key Focus:</h4>
+            <ul>
+                <li>Anti-drone system development with multi-frequency jamming capabilities.</li>
+                <li>Design and simulation of Log-Periodic Dipole Array (LPDA) and Vivaldi antennas.</li>
+                <li>Contributed to successful system tests that neutralized drone signals at a 1 km range.</li>
+            </ul>
+
+            <div class="collapsible-details">
+                <h4>Achievements:</h4>
+                <ul>
+                <li>Successfully designed a series of LPDA antennas for a jammer system covering 433 MHz, 900-1580 MHz, 2.4 GHz, and 5.8 GHz frequencies.</li>
+                <li>Achieved measured antenna performance exceeding targets (VSWR &lt; 1.5, RL &lt; -10 dB), for instance, at 5.8 GHz achieving a VSWR of 1.15 and a Return Loss of -25.20 dB.</li>
+                <li>Contributed to end-to-end system tests that successfully blocked drone signals at a 1 km test range, forcing the drone to initiate its emergency landing procedure.</li>
+                <li>Contributed to the preparation of patent and Industrial Design documents for the jammer antenna technology as a project deliverable.</li>
+            </ul>
+            </div>
+        </div>
+        <a href="#" class="text-link-button project-button">Learn More</a>
+
+    </div>
+</section>
+
+    <section class="project-card">
+    <img src="img/project2.jpg" alt="Gambar Proyek Telkomsat" class="project-image">
+    <div class="project-details">
+        <h2 class="project-title">Research Assistant Intern at PT. Telkomsat</h2>
+        <div class="project-description">
+            <h4>Key Focus:</h4>
+            <ul>
+                <li>Developed a reliable antenna deployment mechanism for a 3U CubeSat.</li>
+                <li>Included an Arduino-controlled heater system for on-orbit deployment.</li>
+                <li>Achieved antenna performance (VSWR & RL) that met all mission specifications.</li>
+            </ul>
+
+            <div class="collapsible-details">
+                <h4>Achievements:</h4>
+                <ul>
+                    <li>Achieved measured antenna performance meeting mission specifications: AIS antenna (VSWR 1.26, RL -18.47 dB) and TTC antenna (VSWR 1.57, RL -13.95 dB).</li>
+                    <li>Successfully tested a heater system capable of severing a nylon retaining string in 40 seconds, ensuring reliable on-orbit antenna deployment.</li>
+                    <li>Delivered a complete, end-to-end design for the CubeSat's deployable antenna system, encompassing antenna design, deployment mechanism, and bracket structure.</li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" class="text-link-button project-button">Learn More</a>
+    </div>
+</section>
+
+        <section class="project-card">
+            <img src="img/antena.png" alt="Gambar Proyek Antenna Tracker" class="project-image">
+            <div class="project-details">
+                <h2 class="project-title">Antenna Tracker for Drone's Video FPV Capstone Final Project</h2>
+                <div class="project-description">
+                    <h4>Key Focus:</h4>
+            <ul>
+                <li>Designed and simulated a 1×2 helix array antenna using CST Studio Suite, optimized for the 5.8 GHz frequency band.</li>
+                <li>Developed an automated tracking system using an Arduino Mega 2560 microcontroller, integrated with GPS and LoRa modules for coordinate-based tracking.
+</li>
+                <li>Implemented and field-tested a functional prototype to validate system performance in real-world operational scenarios.
+</li>
+            </ul>
+
+            <div class="collapsible-details">
+                <h4>Achievements:</h4>
+                <ul>
+                    <li>Successfully maintained drone video transmission quality up to a ±600-meter range with 100 mW transmit power , achieving key antenna parameters of -13.213 dB Return Loss and 1.559 VSWR.
+</li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" class="text-link-button project-button">Learn More</a>
+    </div>
+</section>
+
+        <nav class="page-nav">
+             <a href="experience.html" class="button">My Experience</a>
+             <a href="about.html" class="button">About Me</a>
+        </nav>
+    </div> <script>
+    // Ambil semua tombol "Learn More"
+    const projectButtons = document.querySelectorAll('.project-button');
+
+    // Tambahkan fungsi 'click' pada setiap tombol
+    projectButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            // Mencegah link pindah halaman saat diklik
+            event.preventDefault(); 
+
+            // Cari kartu proyek terdekat dari tombol yang diklik
+            const projectCard = this.closest('.project-card');
+
+            // Tambah atau hapus class 'active' pada kartu tersebut
+            projectCard.classList.toggle('active');
+
+            // Ganti teks tombol berdasarkan status aktif
+            if (projectCard.classList.contains('active')) {
+                this.textContent = 'Show Less';
+            } else {
+                this.textContent = 'Learn More';
+            }
+        });
+    });
+</script>
+<script>
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        // Toggle class 'nav-active' pada menu
+        navLinks.classList.toggle('nav-active');
+        
+        // Toggle class 'active' pada tombol hamburger untuk animasi
+        hamburger.classList.toggle('active');
+    });
+</script>
+</body> 
+</html>
